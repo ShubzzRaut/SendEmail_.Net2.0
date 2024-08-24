@@ -1,0 +1,32 @@
+****** INFORMATION ********
+
+1) using .NET FRAMEWORK 2.0 CONSOLE APPLICATION
+
+
+2) dont need to install any packages
+   using system has packages required for email to send  
+
+
+3) Multiple email id and multiple attachment we can use in this project
+
+
+4) LOG File can be use to show step by step message upto succesfull with respect to time and to show error also
+
+
+
+
+ARGUMENTS - 
+1) drive (only file path for log file without file name)
+2) senderEmail (MAIN EMAIL -we using customer email that they can send email of daily report to himself)
+3) senderPassword (special type of password getting from https://myaccount.google.com - home - search box search for app passwords - generate)
+4) debugmode (essential for debug logic)
+5) emailSubject (to send email we need subject ex. - "Daily Report")
+6) emailBody (message to write)
+7) emailid (one or multiple email id that where we can send email , we can take own email id to sen it to self)
+8) attachment (one or multiple attachment with email id)
+
+
+
+ARGUMENTS PASS - 
+
+E:\testingEmail oksoftware01@gmail.com rxhfkrjcgfgvahej 3 "Sale Purchase Report" "here is my report please check it" rautshubham815@gmail.com oksoftware01@gmail.com "E:\testingEmail\e-way-bill-api-reference-document.pdf" "E:\testingEmail\PURCHASE SUMMARY 2.xlsx" "E:\testingEmail\G1.PRN" "E:\testingEmail\newreport.txt"
