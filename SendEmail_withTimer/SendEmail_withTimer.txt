@@ -1,0 +1,21 @@
+****** INFORMATION ********
+
+1) using .NET FRAMEWORK 2.0 CONSOLE APPLICATION
+
+
+2) dont need to install any packages
+   using system has packages required for email to send 
+
+
+3) every day report is send to a perticular email at time 9pm
+
+
+4) we do not pass any argument here, u can manage the code accordingly
+
+
+email id/password -  oksoftware01@gmail.com/Zebronics@40919
+
+
+
+
+

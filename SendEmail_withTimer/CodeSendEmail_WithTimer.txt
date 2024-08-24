@@ -1,0 +1,71 @@
+using System;
+using System.Net;
+using System.Net.Mail;
+using System.Threading;
+
+namespace SendEmail101
+{
+    class Program
+    {
+        static Timer timer;
+        static void Main(string[] args)
+        {
+            // Schedule the email to be sent every day at 9 PM
+            ScheduleDailyEmail();
+
+            // Prevent the application from exiting
+            Console.ReadLine();
+        }
+        static void ScheduleDailyEmail()
+        {
+            // Create a Timer to check every minute
+            timer = new Timer(CheckTimeToSendEmail, null, 0, 60000); // 60000 ms = 1 minute
+        }
+
+        static void CheckTimeToSendEmail(object state)
+        {
+            DateTime currentTime = DateTime.Now;
+
+            // Check if the current time is 9 PM and the seconds are near 0 to avoid multiple triggers
+            if (currentTime.Hour == 18 && currentTime.Minute == 31)
+            {
+                SendDailyReportWithAttachment(@"E:\project\SEND_EMAIL\reportfile.txt");
+
+                // Prevent multiple emails within the same minute by stopping the timer temporarily
+                timer.Change(60000, Timeout.Infinite);  // Stops for 1 minute, then resets
+
+                // You can also use some flag mechanism to ensure it only triggers once at 9 PM
+            }
+        }
+
+        static void SendDailyReportWithAttachment(string reportFilePath)
+        {
+            try
+            {
+                // Set up the email
+                MailMessage mail = new MailMessage("oksoftware01@gmail.com", "rautshubham815@gmail.com");
+                mail.Subject = "Daily Report";
+                mail.Body = "Please find the daily report attached.";
+
+                // Attach the report file
+                Attachment attachment = new Attachment(reportFilePath);
+                mail.Attachments.Add(attachment);
+
+                // Set up the SMTP client
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+                smtpClient.Port = 587;
+                smtpClient.Credentials = new NetworkCredential("oksoftware01@gmail.com", "rxhf krjc gfgv ahej");
+                smtpClient.EnableSsl = true;
+
+                // Send the email with the attachment
+                smtpClient.Send(mail);
+
+                Console.WriteLine("Report sent successfully with attachment.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error sending report: " + ex.Message);
+            }
+        }
+    }
+}
